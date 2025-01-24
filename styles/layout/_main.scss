@@ -1,7 +1,10 @@
 * {
     box-sizing: border-box;
+    // border-radius: var(--border-radius);
 }
-
+:root {
+    --border-radius: 0px !important;
+}
 html {
     height: 100%;
 }

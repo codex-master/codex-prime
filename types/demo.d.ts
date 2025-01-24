@@ -61,6 +61,13 @@ export interface AppMailReplyProps {
 }
 
 declare namespace Demo {
+    interface User {
+        name: string;
+        email: string;
+        gender: "male" | "female";
+        password: string;
+        dateOfBirth: Date;
+    }
     interface Task {
         id?: number;
         name?: string;
@@ -217,4 +224,26 @@ declare namespace Demo {
         setId?: number;
         iconIdx?: number;
     };
+}
+
+
+interface Country {
+    name: string;
+    code: string;
+}
+
+interface Representative {
+    name: string;
+    code?: string;
+    image: string;
+}
+
+
+interface LazyTableState {
+    first: number;
+    rows: number;
+    page: number;
+    sortField?: string | null;
+    sortOrder?: number | null;
+    filters: DataTableFilterMeta;
 }

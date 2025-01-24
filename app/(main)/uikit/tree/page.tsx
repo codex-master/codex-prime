@@ -10,7 +10,7 @@ const TreeDemo = () => {
     const [files, setFiles] = useState<TreeNode[]>([]);
     const [files2, setFiles2] = useState<TreeNode[]>([]);
     const [selectedFileKeys, setSelectedFileKeys] = useState<string | TreeMultipleSelectionKeys | TreeCheckboxSelectionKeys | null>(null);
-    const [selectedFileKeys2, setSelectedFileKeys2] = useState<TreeTableSelectionKeysType | null>(null);
+    const [selectedFileKeys2, setSelectedFileKeys2] = useState<TreeTableSelectionKeysType | null | string>(null);
 
     useEffect(() => {
         NodeService.getFiles().then((files) => setFiles(files));

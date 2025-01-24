@@ -13,6 +13,8 @@ import { MegaMenu } from 'primereact/megamenu';
 import { PanelMenu } from 'primereact/panelmenu';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { IconField } from 'primereact/iconfield';
+import { InputIcon } from 'primereact/inputicon';
 
 const MenuDemo = ({ children }: any) => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -479,10 +481,10 @@ const MenuDemo = ({ children }: any) => {
 
     const menubarEndTemplate = () => {
         return (
-            <span className="p-input-icon-left">
-                <i className="pi pi-search" />
+            <IconField iconPosition="left">
+                <InputIcon className="pi pi-search" />
                 <InputText type="text" placeholder="Search" />
-            </span>
+            </IconField>
         );
     };
 

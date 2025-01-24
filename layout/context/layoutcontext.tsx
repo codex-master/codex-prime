@@ -4,12 +4,16 @@ import { LayoutState, ChildContainerProps, LayoutConfig, LayoutContextProps } fr
 export const LayoutContext = createContext({} as LayoutContextProps);
 
 export const LayoutProvider = ({ children }: ChildContainerProps) => {
+    let theme = 'lara-light-cyan';
+    if (typeof localStorage !== 'undefined') {
+        theme = localStorage.getItem('theme') || 'lara-light-blue';
+    }
     const [layoutConfig, setLayoutConfig] = useState<LayoutConfig>({
-        ripple: false,
+        ripple: true,
         inputStyle: 'outlined',
         menuMode: 'static',
         colorScheme: 'light',
-        theme: 'lara-light-indigo',
+        theme: theme,
         scale: 14
     });
 
@@ -19,7 +23,7 @@ export const LayoutProvider = ({ children }: ChildContainerProps) => {
         profileSidebarVisible: false,
         configSidebarVisible: false,
         staticMenuMobileActive: false,
-        menuHoverActive: false
+        menuHoverActive: true
     });
 
     const onMenuToggle = () => {

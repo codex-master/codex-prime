@@ -18,6 +18,8 @@ import { TriStateCheckbox } from 'primereact/tristatecheckbox';
 import { classNames } from 'primereact/utils';
 import React, { useEffect, useState } from 'react';
 import type { Demo } from '@/types';
+import { IconField } from 'primereact/iconfield';
+import { InputIcon } from 'primereact/inputicon';
 
 const TableDemo = () => {
     const [customers1, setCustomers1] = useState<Demo.Customer[]>([]);
@@ -64,10 +66,10 @@ const TableDemo = () => {
         return (
             <div className="flex justify-content-between">
                 <Button type="button" icon="pi pi-filter-slash" label="Clear" outlined onClick={clearFilter1} />
-                <span className="p-input-icon-left">
-                    <i className="pi pi-search" />
+                <IconField iconPosition='left'>
+                    <InputIcon className="pi pi-search" />
                     <InputText value={globalFilterValue1} onChange={onGlobalFilterChange1} placeholder="Keyword Search" />
-                </span>
+                </IconField>
             </div>
         );
     };

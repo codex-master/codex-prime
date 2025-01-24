@@ -12,7 +12,7 @@ import AppConfig from './AppConfig';
 import { LayoutContext } from './context/layoutcontext';
 import { PrimeReactContext } from 'primereact/api';
 import { ChildContainerProps, LayoutState, AppTopbarRef } from '@/types';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, /* useSearchParams */ } from 'next/navigation';
 
 const Layout = ({ children }: ChildContainerProps) => {
     const { layoutConfig, layoutState, setLayoutState } = useContext(LayoutContext);
@@ -36,11 +36,11 @@ const Layout = ({ children }: ChildContainerProps) => {
     });
 
     const pathname = usePathname();
-    const searchParams = useSearchParams();
+    // const searchParams = useSearchParams();
     useEffect(() => {
         hideMenu();
         hideProfileMenu();
-    }, [pathname, searchParams]);
+    }, [pathname, /* searchParams */]);
 
     const [bindProfileMenuOutsideClickListener, unbindProfileMenuOutsideClickListener] = useEventListener({
         type: 'click',
@@ -123,20 +123,22 @@ const Layout = ({ children }: ChildContainerProps) => {
     });
 
     return (
-        <React.Fragment>
-            <div className={containerClass}>
-                <AppTopbar ref={topbarRef} />
-                <div ref={sidebarRef} className="layout-sidebar">
-                    <AppSidebar />
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <React.Fragment>
+                <div className={containerClass}>
+                    <AppTopbar ref={topbarRef} />
+                    <div ref={sidebarRef} className="layout-sidebar">
+                        <AppSidebar />
+                    </div>
+                    <div className="layout-main-container">
+                        <div className="layout-main">{children}</div>
+                        <AppFooter />
+                    </div>
+                    <AppConfig />
+                    <div className="layout-mask"></div>
                 </div>
-                <div className="layout-main-container">
-                    <div className="layout-main">{children}</div>
-                    <AppFooter />
-                </div>
-                <AppConfig />
-                <div className="layout-mask"></div>
-            </div>
-        </React.Fragment>
+            </React.Fragment>
+        </React.Suspense>
     );
 };
 

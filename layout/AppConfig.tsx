@@ -62,7 +62,7 @@ const AppConfig = (props: AppConfigProps) => {
     return (
         <>
             <button className="layout-config-button config-link" type="button" onClick={onConfigButtonClick}>
-                <i className="pi pi-cog"></i>
+                <i className="pi pi-palette"></i>
             </button>
 
             <Sidebar visible={layoutState.configSidebarVisible} onHide={onConfigSidebarHide} position="right" className="layout-config-sidebar w-20rem">
