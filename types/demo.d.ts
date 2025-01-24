@@ -62,6 +62,8 @@ export interface AppMailReplyProps {
 
 declare namespace Demo {
     interface User {
+        id?: number;
+        token?: string;
         name: string;
         email: string;
         gender: "male" | "female";
@@ -109,14 +111,14 @@ declare namespace Demo {
         sent: boolean;
     }
 
-    interface User {
+    /* interface User {
         id: number;
         name: string;
         image: string;
         status: string;
         messages: Message[];
         lastSeen: string;
-    }
+    } */
 
     interface Message {
         text: string;
